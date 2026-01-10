@@ -1,5 +1,12 @@
+from src.classes.livro import Livro
+from src.classes.biblioteca import Biblioteca
+
+
+
 def main():
-    print("Hello from oopproject!")
+    x = Livro("a","b",12,"c")
+    print(x.nomeLivro)
+
 
 
 if __name__ == "__main__":
