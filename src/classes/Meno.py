@@ -28,13 +28,13 @@ class Menu:
         print(Cores.CINZA + " Nem mesmo a chama da ignorância pode destruir o acervo criado aqui \n" + Cores.RESET)
         
 
-        print(Cores.VERDE + "[1]" + Cores.RESET + " Cadastrar livro")
-        print(Cores.VERDE + "[2]" + Cores.RESET + " Listar livros")
-        print(Cores.VERDE + "[3]" + Cores.RESET + " Alugar livro")
-        print(Cores.VERDE + "[4]" + Cores.RESET + " Devolver livro")
-        print(Cores.VERDE + "[5]" + Cores.RESET + " Editar livro")
-        print(Cores.VERDE + "[6]" + Cores.RESET + " Remover livro")
-        print(Cores.VERMELHO + "[0]" + Cores.RESET + " Sair\n")
+        print(Cores.VERDE + "{1}" + Cores.RESET + " Cadastrar livro")
+        print(Cores.VERDE + "{2}" + Cores.RESET + " Listar livros")
+        print(Cores.VERDE + "{3}" + Cores.RESET + " Alugar livro")
+        print(Cores.VERDE + "{4}" + Cores.RESET + " Devolver livro")
+        print(Cores.VERDE + "{5}" + Cores.RESET + " Editar livro")
+        print(Cores.VERDE + "{6}" + Cores.RESET + " Remover livro")
+        print(Cores.VERMELHO + "{0}" + Cores.RESET + " Sair\n")
 
     def executar(self):
         while True:
