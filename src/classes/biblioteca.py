@@ -5,9 +5,7 @@ from src.classes.livro import Livro
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 CAMINHO_DADOS = os.path.join(BASE_DIR, "dados", "biblioteca.json")
-
-
-#Fazer o crud
+if not os.path.exists('dados'): os.makedirs('dados')
 
 class Biblioteca:
 
