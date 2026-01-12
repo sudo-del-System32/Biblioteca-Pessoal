@@ -50,7 +50,10 @@ class Menu:
                 genero = input("Informe o gênero: ")
                 autor = input("Informe o autor: ")
                 
-                self.biblioteca.adicionarLivro(Livro(self.biblioteca.qntLivros + 1, nomeLivro=nome, genero=genero, autor=autor,alugado=False))
+                try:
+                    self.biblioteca.adicionarLivro(Livro(self.biblioteca.qntLivros + 1, nomeLivro=nome, genero=genero, autor=autor,alugado=False))
+                except Exception as e:
+                    print(e)
 
                 print(Cores.VERDE + "\nMais um livro no acervo! Nossa biblioteca enriquece a cada adição" + Cores.RESET)
                 input("\nPressione ENTER para continuar!")
@@ -72,9 +75,14 @@ class Menu:
                 
                 id_livro = input("Informe o ID do livro: ")
                 dias = input("Quantos dias de empréstimo? ")
+                status = False
 
-                status  = self.biblioteca.alugar_livro(int(id_livro), int(dias))
-            
+                try:
+                    status  = self.biblioteca.alugar_livro(int(id_livro), int(dias))
+                except Exception as e:
+                    print(e)
+
+
                 if(status):
                     print(Cores.VERDE + "\nProntinho, só não esqueca de cobrar seu retorno!" + Cores.RESET)
                 else:
@@ -87,8 +95,14 @@ class Menu:
                 print(Cores.AMARELO + "Retorne um livro ao acervo" + Cores.RESET)
 
                 id_livro = input("Informe o ID do livro a ser devolvido: ")
-                status = self.biblioteca.devolver_livro(int(id_livro))
-                
+                status = False
+
+                try:
+                    status = self.biblioteca.devolver_livro(int(id_livro))
+                except Exception as e:
+                    print(e)
+
+
                 if(status):
                     print(Cores.VERDE + "\nSeu acervo agradece! É sagrado manter todo o máximo conhecimento, sem perdas!" + Cores.RESET)
                 else:
@@ -121,8 +135,13 @@ class Menu:
                 else:
                   print("Por obséquio, selecione corretamente")
                   continue
+                status = False
 
-                status = self.biblioteca.editar_livro(int(id_livro), atributo, novo)
+                try:
+                    status = self.biblioteca.editar_livro(int(id_livro), atributo, novo)
+                except Exception as e:
+                    print(e)
+
 
                 if(status):
                     print(Cores.VERDE + "\nInformações prontamente atualizadas!" + Cores.RESET)
@@ -136,7 +155,12 @@ class Menu:
                 print(Cores.AMARELO + "Acidentes acontecem.. Retire um livro da biblioteca" + Cores.RESET)
 
                 id_livro = input("Informe o ID do livro que será retirado: ")
-                status = self.biblioteca.remover_livro(int(id_livro))
+                status = False
+
+                try:
+                    status = self.biblioteca.remover_livro(int(id_livro))
+                except Exception as e:
+                    print(e)
 
 
                 if(status):

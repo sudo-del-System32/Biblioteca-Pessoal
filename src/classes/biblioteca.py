@@ -48,11 +48,12 @@ class Biblioteca:
             print("Id: {}".format(livro.id))
             print("Nome: {}".format(livro.nomeLivro))
             print("Genero: {}".format(livro.genero))
-            print("Data de registro: {}".format(livro.autor))
+            print("Autor: {}".format(livro.autor))
+            print("Data que foi Registrado: {}/{}/{}".format(livro.dataRegistro.day, livro.dataRegistro.month, livro.dataRegistro.year)) 
             
             if(livro.alugado):
-                print("Data que foi alugado: {}/{}/{}".format(livro.dataRegistro.day, livro.dataRegistro.month, livro.dataRegistro.year)) 
-                print("Data que sera devolvido: {}/{}/{}".format(livro.dataRegistro.day, livro.dataRegistro.month, livro.dataRegistro.year))
+                print("Data que foi alugado: {}/{}/{}".format(livro.dataAlugado.day, livro.dataAlugado.month, livro.dataAlugado.year)) 
+                print("Data que sera devolvido: {}/{}/{}".format(livro.dataRetorno.day, livro.dataRetorno.month, livro.dataRetorno.year))
             else:
                 print("O livro ainda esta na biblioteca!")
             print("")
@@ -60,7 +61,7 @@ class Biblioteca:
     def alugar_livro(self, id, dias):
         for livro in self.livros:
             if livro.id == id and livro.alugado == False:
-                livro.alugarLivro(dias)
+                livro.alugarLivro(diasAteRetorno=dias)
                 return True
 
         return False
