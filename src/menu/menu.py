@@ -3,8 +3,7 @@ from src.classes.livro import Livro
 from src.classes.biblioteca import Biblioteca
 
 def limpar_tela():
-    #os.system("cls" if os.name == "nt" else "clear")
-    pass
+    os.system("cls" if os.name == "nt" else "clear")
 
 class Cores:
     RESET = "\033[0m"
