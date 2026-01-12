@@ -63,6 +63,42 @@ class Livro:
 
             case 'alugado':
                 self.genero = dadoAtualizado
-                
+        
         return
+    
+    
+    def salvarDadosDict(self):
+        return {
+            "id": self.id,
+            "nomeLivro": self.nomeLivro,
+            "genero": self.genero,
+            "autor": self.autor,
+            "dataRegistro": self.dataRegistro.isoformat(),
+            "dataAlugado": self.dataAlugado.isoformat() if self.dataAlugado else None,
+            "dataRetorno": self.dataRetorno.isoformat() if self.dataRetorno else None,
+            "alugado": self.alugado
+        }
+    
+    @staticmethod
+    def carregarDadosDict(dados: dict):
+        livro = Livro(
+            dados["id"],
+            dados["nomeLivro"],
+            dados["genero"],
+            dados["autor"],
+            dados["alugado"]
+        )
+
+        livro.dataRegistro = datetime.date.fromisoformat(dados["dataRegistro"])
+        livro.dataAlugado = (
+            datetime.date.fromisoformat(dados["dataAlugado"])
+            if dados["dataAlugado"] else None
+        )
+        livro.dataRetorno = (
+            datetime.date.fromisoformat(dados["dataRetorno"])
+            if dados["dataRetorno"] else None
+        )
+
+        return livro
+
 
