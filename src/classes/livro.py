@@ -11,17 +11,28 @@ class Livro:
         self.autor : str = autor
 
         self.dataRegistro : datetime.date = datetime.datetime.date(datetime.datetime.today())
-        self.dataAlugado : datetime.date  = None
-        self.dataRetorno : datetime.date  = None
-        
+
         self.alugado : bool = alugado
+
+        if(alugado):
+            self.alugarLivro()
+        else:
+            self.dataAlugado : datetime.date  = None
+            self.dataRetorno : datetime.date  = None
+
+
 
     def informacoesLivro(self):
         return (self.__dict__)
 
-    def alugarLivro(self, diasAteRetorno : int):
+    def alugarLivro(self, diasAteRetorno : int = -1):
         self.dataAlugado = datetime.datetime.date(datetime.datetime.today())
-        self.dataRetorno = datetime.timedelta(days=diasAteRetorno) + self.dataAlugado
+        
+        if(diasAteRetorno != -1):
+            self.dataRetorno = datetime.timedelta(days=diasAteRetorno) + self.dataAlugado
+        else:
+            self.dataRetorno = None
+
         self.alugado = True
         return
     

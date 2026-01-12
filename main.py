@@ -2,6 +2,7 @@ import datetime
 from typing import List, Optional
 from src.classes.livro import Livro
 from src.classes.biblioteca import Biblioteca
+from src.menu.menu import Menu
 
 
 
@@ -9,23 +10,16 @@ def main():
     biblioteca = Biblioteca.carregarDados()
 
     if not biblioteca.livros:
-        x = Livro(12,"b","c","d", False)
-        biblioteca.adicionarLivro(x)
+        biblioteca.adicionarLivro(Livro(biblioteca.qntLivros + 1, "Crime e Castigo", "Romance", "Fiódor Dostoiévski", False))
+        biblioteca.adicionarLivro(Livro(biblioteca.qntLivros + 1, "A Mansão Hollow", "Romance policial", "A Mansão Hollow", False))
+        biblioteca.adicionarLivro(Livro(biblioteca.qntLivros + 1, "Gaston Leroux", "Romance francês de ficção gótica,", "Gaston Leroux", False))
+        biblioteca.adicionarLivro(Livro(biblioteca.qntLivros + 1, "Anne de Green Gables", "Romance canadense", "Montgomery, L. M. (Lucy Maud)", False))
+        biblioteca.adicionarLivro(Livro(biblioteca.qntLivros + 1, "O Pequeno Príncipe", "Literatura Infanto-Juvenil, Novela", "O Pequeno Príncipe", False))
     else:
         x = biblioteca.livros[0]
-    
-    for livro in biblioteca.livros:
-        print(livro.salvarDadosDict())
-    
-    y = x.informacoesLivro()
-    print(y)
-    x.alugarLivro(23)
-    print(y)
-    x.devolverLivro()
-    print(y)
-    x.alugarLivro(23)
-    x.atualizarInfo('dataAlugado', datetime.date(2012, 10, 1))
-    print(y)
+        
+    menu = Menu(biblioteca=biblioteca)
+    menu.executar()
 
     biblioteca.salvarDados()
 
